@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rayn Copy — Fiches Produit qui Vendent</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F5F0E8;
+  --cream2:#EDE8DF;
+  --dark:#0E0C0A;
+  --dark2:#1A1714;
+  --brown:#3D2F20;
+  --ink:#2A2015;
+  --gold:#B8860B;
+  --gold2:#D4A017;
+  --muted:#8A7E6F;
+  --border:rgba(61,47,32,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'Instrument Sans',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:22px 64px;background:rgba(245,240,232,0.97);border-bottom:1px solid transparent;backdrop-filter:blur(8px);transition:border-color 0.3s;}
+nav.scrolled{border-bottom-color:var(--border);}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:0.02em;}
+.logo em{color:var(--gold);font-style:italic;}
+.nav-links{display:flex;gap:40px;list-style:none;align-items:center;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{background:var(--ink) !important;color:var(--cream) !important;padding:10px 24px;font-weight:400 !important;letter-spacing:0.06em !important;transition:background 0.2s !important;}
+.nav-cta:hover{background:var(--brown) !important;}
+
+/* HERO */
+.hero{padding:160px 64px 100px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;min-height:100vh;}
+.hero-text .kicker{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+.hero-text .kicker::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5.5vw,5.2rem);font-weight:600;line-height:1.0;letter-spacing:-0.02em;margin-bottom:28px;color:var(--ink);}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.7;margin-bottom:40px;max-width:440px;}
+.hero-proof{display:flex;gap:32px;margin-top:44px;padding-top:36px;border-top:1px solid var(--border);}
+.proof-item .num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--ink);line-height:1;}
+.proof-item .lbl{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+
+.hero-visual{position:relative;}
+.hero-card{background:var(--dark);color:var(--cream);padding:36px;position:relative;overflow:hidden;}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),var(--gold2));}
+.hero-card-label{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,240,232,0.4);margin-bottom:20px;}
+.hero-card h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:12px;line-height:1.3;}
+.hero-card p{font-size:0.82rem;color:rgba(245,240,232,0.65);line-height:1.65;margin-bottom:20px;}
+.hero-card .tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.tag{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(245,240,232,0.15);color:rgba(245,240,232,0.5);}
+.hero-card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07);}
+.hero-card-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--gold2);}
+.mini-btn{background:var(--gold);color:var(--dark);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;padding:9px 18px;border:none;cursor:pointer;font-family:'Instrument Sans',sans-serif;transition:background 0.2s;}
+.mini-btn:hover{background:var(--gold2);}
+.hero-card-note{margin-top:16px;font-size:0.7rem;color:rgba(245,240,232,0.35);letter-spacing:0.06em;}
+
+/* BTNS */
+.btn-dark{background:var(--ink);color:var(--cream);padding:16px 38px;font-size:0.8rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;font-family:'Instrument Sans',sans-serif;display:inline-block;transition:all 0.25s;}
+.btn-dark:hover{background:var(--brown);transform:translateY(-2px);}
+.btn-border{padding:16px 38px;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--border);color:var(--ink);cursor:pointer;background:none;font-family:'Instrument Sans',sans-serif;display:inline-block;text-decoration:none;transition:all 0.25s;}
+.btn-border:hover{border-color:var(--ink);}
+
+/* HOW IT WORKS */
+.how-section{background:var(--dark);padding:100px 64px;color:var(--cream);}
+.how-section .kicker{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.how-section .kicker::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+.how-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:600;margin-bottom:56px;letter-spacing:-0.01em;}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.07);}
+.how-step{padding:40px 32px;border-right:1px solid rgba(255,255,255,0.07);}
+.how-step:last-child{border-right:none;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:700;color:rgba(255,255,255,0.06);line-height:1;margin-bottom:20px;}
+.how-step h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:10px;color:var(--cream);}
+.how-step p{font-size:0.8rem;color:rgba(245,240,232,0.5);line-height:1.65;}
+
+/* SERVICES */
+.services-section{padding:100px 64px;}
+.services-section .sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:56px;}
+.services-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:600;letter-spacing:-0.01em;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.scard{background:var(--cream2);padding:40px 36px;cursor:pointer;transition:background 0.25s;position:relative;overflow:hidden;}
+.scard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transition:transform 0.3s;transform-origin:left;}
+.scard:hover{background:var(--dark);color:var(--cream);}
+.scard:hover::after{transform:scaleX(1);}
+.scard-icon{font-size:2rem;margin-bottom:20px;display:block;}
+.scard h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:12px;line-height:1.2;}
+.scard p{font-size:0.82rem;color:var(--muted);line-height:1.65;margin-bottom:20px;transition:color 0.25s;}
+.scard:hover p{color:rgba(245,240,232,0.6);}
+.scard-deliverables{display:flex;flex-direction:column;gap:6px;margin-bottom:28px;}
+.scard-deliverables span{font-size:0.72rem;color:var(--muted);display:flex;align-items:center;gap:7px;transition:color 0.25s;}
+.scard:hover .scard-deliverables span{color:rgba(245,240,232,0.55);}
+.scard-deliverables span::before{content:'✓';color:var(--gold);font-weight:500;}
+.scard-price{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--ink);transition:color 0.25s;}
+.scard:hover .scard-price{color:var(--gold2);}
+.scard-price small{font-family:'Instrument Sans',sans-serif;font-size:0.7rem;font-weight:300;color:var(--muted);margin-left:6px;}
+.scard-cta{margin-top:24px;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(6px);transition:all 0.3s;display:flex;align-items:center;gap:6px;}
+.scard:hover .scard-cta{opacity:1;transform:translateY(0);}
+
+/* BEFORE/AFTER */
+.ba-section{background:var(--dark2);padding:100px 64px;color:var(--cream);}
+.ba-section .kicker{font-size:0.72rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.ba-section .kicker::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+.ba-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:600;margin-bottom:52px;letter-spacing:-0.01em;}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.ba-card{padding:40px;}
+.ba-before{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);}
+.ba-after{background:rgba(184,134,11,0.08);border:1px solid rgba(184,134,11,0.2);}
+.ba-label{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.ba-before .ba-label{color:rgba(255,255,255,0.3);}
+.ba-after .ba-label{color:var(--gold);}
+.ba-before .ba-label::before{content:'✗';font-size:0.8rem;}
+.ba-after .ba-label::before{content:'✓';font-size:0.8rem;}
+.ba-text{font-size:0.9rem;line-height:1.75;}
+.ba-before .ba-text{color:rgba(245,240,232,0.45);}
+.ba-after .ba-text{color:rgba(245,240,232,0.85);}
+.ba-result{margin-top:20px;padding-top:16px;border-top:1px solid rgba(184,134,11,0.2);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);}
+
+/* TRUST */
+.trust-section{padding:80px 64px;display:flex;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.trust-item{flex:1;padding:40px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:10px;align-items:flex-start;}
+.trust-item:last-child{border-right:none;}
+.trust-icon{font-size:1.8rem;}
+.trust-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;}
+.trust-desc{font-size:0.78rem;color:var(--muted);line-height:1.6;}
+
+/* ORDER MODAL */
+.modal-back{position:fixed;inset:0;background:rgba(14,12,10,0.85);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(5px);}
+.modal-back.open{display:flex;}
+.modal{background:var(--cream);width:min(94vw,800px);max-height:92vh;overflow-y:auto;position:relative;animation:mIn 0.35s ease;}
+@keyframes mIn{from{opacity:0;transform:translateY(18px)scale(0.97);}to{opacity:1;transform:none;}}
+.modal-x{position:absolute;top:18px;right:22px;background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;z-index:10;transition:color 0.2s;}
+.modal-x:hover{color:var(--ink);}
+.modal-body{padding:52px;}
+.mstep{display:none;}
+.mstep.active{display:block;}
+
+/* ORDER STEP 1 */
+.order-header{margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid var(--border);}
+.order-header .kicker{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.order-header .kicker::before{content:'';display:block;width:22px;height:1px;background:var(--gold);}
+.order-header h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;margin-bottom:6px;}
+.order-header p{font-size:0.85rem;color:var(--muted);}
+
+.options-grid{display:grid;gap:12px;margin-bottom:28px;}
+.option-row{display:flex;align-items:flex-start;gap:16px;padding:18px 20px;border:1px solid var(--border);cursor:pointer;transition:all 0.2s;position:relative;}
+.option-row:hover,.option-row.selected{border-color:var(--gold);background:rgba(184,134,11,0.04);}
+.option-row.selected::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);}
+.opt-radio{width:18px;height:18px;border:2px solid var(--muted);border-radius:50%;flex-shrink:0;margin-top:2px;transition:all 0.2s;display:flex;align-items:center;justify-content:center;}
+.option-row.selected .opt-radio{border-color:var(--gold);background:var(--gold);}
+.option-row.selected .opt-radio::after{content:'';width:6px;height:6px;background:white;border-radius:50%;}
+.opt-info{flex:1;}
+.opt-info h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;margin-bottom:4px;}
+.opt-info p{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+.opt-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--ink);flex-shrink:0;}
+
+.qty-section{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;background:var(--cream2);margin-bottom:24px;}
+.qty-section label{font-size:0.78rem;color:var(--ink);}
+.qty-section label small{display:block;font-size:0.7rem;color:var(--muted);margin-top:2px;}
+.qty-ctrl{display:flex;align-items:center;gap:14px;}
+.qty-btn2{width:32px;height:32px;border:1px solid var(--border);background:white;color:var(--ink);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.qty-btn2:hover{border-color:var(--ink);}
+.qty-val2{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;min-width:24px;text-align:center;}
+
+.recap-dark{background:var(--ink);color:var(--cream);padding:20px 24px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;}
+.recap-dark .lbl{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(245,240,232,0.5);margin-bottom:4px;}
+.recap-dark .val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;}
+.recap-dark .total-price{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--gold2);}
+
+/* ORDER STEP 2 */
+.brief-section h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:6px;}
+.brief-section p{font-size:0.82rem;color:var(--muted);margin-bottom:28px;}
+.form-stack{display:grid;gap:16px;}
+.fi{display:flex;flex-direction:column;gap:6px;}
+.fi label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.fi input,.fi textarea,.fi select{background:white;border:1px solid var(--border);color:var(--ink);padding:12px 16px;font-family:'Instrument Sans',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.2s;resize:vertical;}
+.fi input:focus,.fi textarea:focus,.fi select:focus{border-color:var(--ink);}
+.fi input::placeholder,.fi textarea::placeholder{color:var(--muted);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+
+/* STEP 3 */
+.pay-recap{background:var(--cream2);border-left:3px solid var(--gold);padding:20px 22px;margin-bottom:24px;}
+.pay-recap-row{display:flex;justify-content:space-between;font-size:0.85rem;padding:5px 0;}
+.pay-recap-row.total{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;border-top:1px solid var(--border);margin-top:8px;padding-top:12px;}
+.stripe-box{border:1px solid var(--border);padding:20px;margin-bottom:20px;}
+.stripe-box-label{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.stripe-box-label::before{content:'🔒';font-size:0.9rem;}
+.stripe-fields{display:grid;gap:10px;}
+.sf{background:var(--cream2);border:1px solid var(--border);padding:12px 16px;font-family:'Instrument Sans',sans-serif;font-size:0.85rem;color:var(--muted);}
+
+/* STEP 4 */
+.conf-wrap{text-align:center;padding:16px 0;}
+.conf-icon{width:68px;height:68px;background:rgba(184,134,11,0.1);border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 24px;}
+.conf-wrap h2{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;margin-bottom:12px;}
+.conf-wrap p{font-size:0.88rem;color:var(--muted);line-height:1.65;margin-bottom:28px;}
+.conf-card{background:var(--dark);color:var(--cream);padding:24px 28px;text-align:left;margin-bottom:28px;}
+.conf-row{display:flex;justify-content:space-between;font-size:0.82rem;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.conf-row:last-child{border-bottom:none;}
+.conf-row span:first-child{color:rgba(245,240,232,0.45);}
+
+/* MODAL NAV */
+.mnav{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--border);}
+.step-dots{display:flex;gap:7px;}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--border);}
+.sdot.done{background:var(--gold);}
+
+/* FOOTER */
+footer{background:var(--dark);color:var(--cream);padding:70px 64px 36px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:52px;}
+.footer-brand .logo2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;margin-bottom:14px;display:block;}
+.footer-brand .logo2 em{color:var(--gold);font-style:italic;}
+.footer-brand p{font-size:0.8rem;color:rgba(245,240,232,0.45);line-height:1.7;margin-bottom:24px;}
+.footer-col h5{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.footer-col ul a{font-size:0.8rem;color:rgba(245,240,232,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-col ul a:hover{color:var(--cream);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;}
+.footer-bottom p{font-size:0.7rem;color:rgba(245,240,232,0.3);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.in{opacity:1;transform:none;}
+
+@media(max-width:1024px){
+  nav{padding:18px 32px;}
+  .hero,.services-section,.how-section,.ba-section,.trust-section{padding-left:32px;padding-right:32px;}
+  .hero{grid-template-columns:1fr;gap:48px;padding-top:120px;}
+  .how-grid{grid-template-columns:1fr 1fr;}
+  .how-step{border-right:none;border-bottom:1px solid rgba(255,255,255,0.07);}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
+  footer{padding:50px 32px 28px;}
+}
+@media(max-width:768px){
+  nav .nav-links{display:none;}
+  .hero{padding:100px 20px 60px;}
+  .how-section,.services-section,.ba-section,.trust-section{padding:60px 20px;}
+  .how-grid{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr;}
+  .ba-grid{grid-template-columns:1fr;}
+  .trust-section{flex-direction:column;}
+  .trust-item{border-right:none;border-bottom:1px solid var(--border);}
+  .modal-body{padding:28px 20px;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  footer{padding:40px 20px 24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">Rayn<em> Copy</em></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#exemples">Exemples</a></li>
+    <li><a href="#processus">Comment ça marche</a></li>
+    <li><a href="#" class="nav-cta" onclick="openOrder('fiche')">Commander →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text reveal">
+    <div class="kicker">Copywriting e-commerce</div>
+    <h1>Des fiches produit qui <em>font vendre.</em></h1>
+    <p class="hero-sub">Vous avez du trafic, mais vos visiteurs n'achètent pas ? Le problème n'est pas votre produit. C'est comment il est présenté. Je réécris vos fiches pour convertir.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      <button class="btn-dark" onclick="openOrder('fiche')">Commander une fiche</button>
+      <a href="#exemples" class="btn-border">Voir des exemples</a>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-item"><div class="num">+34%</div><div class="lbl">Taux de conversion moyen</div></div>
+      <div class="proof-item"><div class="num">72h</div><div class="lbl">Délai de livraison</div></div>
+      <div class="proof-item"><div class="num">100%</div><div class="lbl">Satisfait ou refait</div></div>
+    </div>
+  </div>
+  <div class="hero-visual reveal">
+    <div class="hero-card">
+      <div class="hero-card-label">Exemple · Fiche produit réécrite</div>
+      <h3>Montre Automatique Heritage Oak — Édition Limitée</h3>
+      <p>Portez l'heure comme une déclaration. Le boîtier en acier 316L, le cadran ivoire vieilli et le mouvement Miyota 9015 visible en fond saphir font de cette pièce bien plus qu'une montre — c'est un héritage que vous transmettrez.</p>
+      <div class="tag-row">
+        <div class="tag">Horlogerie</div>
+        <div class="tag">Édition limitée</div>
+        <div class="tag">Luxe accessible</div>
+      </div>
+      <div class="hero-card-footer">
+        <div class="hero-card-price">249,00€</div>
+        <button class="mini-btn" onclick="openOrder('fiche')">Ajouter au panier</button>
+      </div>
+      <div class="hero-card-note">✦ Conversion après réécriture : +41%</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="processus" class="how-section">
+  <div class="kicker">Le processus</div>
+  <h2>Simple. Rapide. Efficace.</h2>
+  <div class="how-grid">
+    <div class="how-step reveal">
+      <div class="step-num">01</div>
+      <h4>Vous commandez</h4>
+      <p>Choisissez votre formule, remplissez un brief simple sur vos produits et objectifs. Paiement sécurisé en ligne.</p>
+    </div>
+    <div class="how-step reveal">
+      <div class="step-num">02</div>
+      <h4>J'analyse</h4>
+      <p>J'étudie votre niche, vos concurrents et le profil de votre client idéal pour rédiger avec précision.</p>
+    </div>
+    <div class="how-step reveal">
+      <div class="step-num">03</div>
+      <h4>Je rédige</h4>
+      <p>Fiches produit livrées sous 72h. Chaque texte est calibré pour déclencher l'achat, pas juste informer.</p>
+    </div>
+    <div class="how-step reveal">
+      <div class="step-num">04</div>
+      <h4>Vous vendez</h4>
+      <p>Copiez-collez. Si les résultats ne sont pas au rendez-vous, je réécris gratuitement. Aucun risque.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="sec-head reveal">
+    <h2>Ce que je fais pour vous</h2>
+  </div>
+  <div class="services-grid">
+
+    <div class="scard reveal" onclick="openOrder('fiche')">
+      <span class="scard-icon">📦</span>
+      <h3>Fiche Produit Solo</h3>
+      <p>Une fiche produit réécrite de A à Z. Titre accrocheur, description persuasive, bullet points qui convertissent.</p>
+      <div class="scard-deliverables">
+        <span>Titre + sous-titre optimisés</span>
+        <span>Description 150-250 mots</span>
+        <span>5 bullet points bénéfices</span>
+        <span>1 révision incluse</span>
+      </div>
+      <div class="scard-price">29€ <small>/ fiche</small></div>
+      <div class="scard-cta">Commander →</div>
+    </div>
+
+    <div class="scard reveal" onclick="openOrder('pack')">
+      <span class="scard-icon">🗂</span>
+      <h3>Pack 5 Fiches</h3>
+      <p>Idéal pour relancer une collection ou optimiser vos best-sellers en une seule commande groupée.</p>
+      <div class="scard-deliverables">
+        <span>5 fiches produit complètes</span>
+        <span>Cohérence de ton garantie</span>
+        <span>Livraison en 5 jours ouvrés</span>
+        <span>2 révisions incluses</span>
+      </div>
+      <div class="scard-price">120€ <small>/ pack</small></div>
+      <div class="scard-cta">Commander →</div>
+    </div>
+
+    <div class="scard reveal" onclick="openOrder('premium')">
+      <span class="scard-icon">🚀</span>
+      <h3>Pack Premium 15 Fiches</h3>
+      <p>Pour refondre tout un catalogue. Audit de votre boutique inclus + recommandations stratégiques.</p>
+      <div class="scard-deliverables">
+        <span>15 fiches produit complètes</span>
+        <span>Audit de boutique offert</span>
+        <span>Livraison en 10 jours ouvrés</span>
+        <span>Révisions illimitées</span>
+      </div>
+      <div class="scard-price">299€ <small>/ pack</small></div>
+      <div class="scard-cta">Commander →</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section id="exemples" class="ba-section">
+  <div class="kicker">Avant / Après</div>
+  <h2>La différence se voit. Et se mesure.</h2>
+  <div class="ba-grid reveal">
+    <div class="ba-card ba-before">
+      <div class="ba-label">Avant — Texte original</div>
+      <p class="ba-text">Sac à main en cuir noir. Fermeture éclair. Poignée en cuir. Dimensions : 30x20x10cm. Livraison sous 3-5 jours. Différentes couleurs disponibles.</p>
+    </div>
+    <div class="ba-card ba-after">
+      <div class="ba-label">Après — Réécriture Rayn Copy</div>
+      <p class="ba-text">Élégance sans compromis. Ce sac en cuir pleine fleur porte autant vos essentiels que votre caractère. La fermeture métal brossé, les finitions surpiquées à la main et la doublure satin ivoire en font un accessoire qui vieillit avec vous — et ça, on appelle ça du style.</p>
+      <div class="ba-result">↑ Taux de conversion +38% · Panier moyen +22%</div>
+    </div>
+  </div>
+  <div class="ba-grid reveal" style="margin-top:2px;">
+    <div class="ba-card ba-before">
+      <div class="ba-label">Avant — Texte original</div>
+      <p class="ba-text">Crème hydratante visage. Formule légère. Pour tous types de peau. Sans paraben. 50ml. À appliquer matin et soir.</p>
+    </div>
+    <div class="ba-card ba-after">
+      <div class="ba-label">Après — Réécriture Rayn Copy</div>
+      <p class="ba-text">Réveillez-vous avec une peau qui rayonne. Cette crème à l'acide hyaluronique 2% pénètre en 60 secondes sans film gras, repulpe les microrugosités dès J+7 et protège la barrière cutanée toute la journée. Clean beauty, 0 compromis sur l'efficacité.</p>
+      <div class="ba-result">↑ Taux de conversion +52% · Note produit 4,9/5</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust-section">
+  <div class="trust-item reveal">
+    <div class="trust-icon">⚡</div>
+    <div class="trust-title">Livraison 72h</div>
+    <div class="trust-desc">Vos fiches produit livrées en moins de 3 jours ouvrés. Pas de mois d'attente.</div>
+  </div>
+  <div class="trust-item reveal">
+    <div class="trust-icon">🔄</div>
+    <div class="trust-title">Révisions incluses</div>
+    <div class="trust-desc">Pas satisfait ? Je réécris jusqu'à ce que vous soyez 100% convaincu.</div>
+  </div>
+  <div class="trust-item reveal">
+    <div class="trust-icon">🎯</div>
+    <div class="trust-title">Copywriting de conversion</div>
+    <div class="trust-desc">Chaque mot est choisi pour déclencher l'achat, pas juste pour remplir une fiche.</div>
+  </div>
+  <div class="trust-item reveal">
+    <div class="trust-icon">💳</div>
+    <div class="trust-title">Paiement sécurisé</div>
+    <div class="trust-desc">Stripe. Vos données bancaires ne transitent jamais par mes serveurs.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo2">Rayn<em> Copy</em></span>
+      <p>Copywriter e-commerce spécialisé en fiches produit qui convertissent. Chaque mot compte. Chaque vente aussi.</p>
+      <button class="btn-dark" onclick="openOrder('fiche')" style="font-size:0.75rem;padding:12px 24px;">Commander →</button>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#" onclick="openOrder('fiche')">Fiche produit solo</a></li>
+        <li><a href="#" onclick="openOrder('pack')">Pack 5 fiches</a></li>
+        <li><a href="#" onclick="openOrder('premium')">Pack Premium 15 fiches</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Infos</h5>
+      <ul>
+        <li><a href="#">Comment ça marche</a></li>
+        <li><a href="#">Exemples</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">CGV</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Rayn Copy. Tous droits réservés.</p>
+    <p>Paiement sécurisé · Stripe · RGPD</p>
+  </div>
+</footer>
+
+<!-- ORDER MODAL -->
+<div class="modal-back" id="orderModal" onclick="handleMBack(event)">
+  <div class="modal" id="orderMod">
+    <button class="modal-x" onclick="closeOrder()">✕</button>
+    <div class="modal-body">
+
+      <!-- STEP 1: Choisir la formule -->
+      <div class="mstep active" id="os1">
+        <div class="order-header">
+          <div class="kicker">Commander</div>
+          <h2>Choisissez votre formule</h2>
+          <p>Sélectionnez la formule qui correspond à vos besoins.</p>
+        </div>
+        <div class="options-grid" id="optionsGrid">
+          <div class="option-row" onclick="selectOpt(this,'fiche',1,29)">
+            <div class="opt-radio"></div>
+            <div class="opt-info"><h4>Fiche Produit Solo</h4><p>1 fiche complète — titre, description, bullet points</p></div>
+            <div class="opt-price">29€</div>
+          </div>
+          <div class="option-row" onclick="selectOpt(this,'pack',5,120)">
+            <div class="opt-radio"></div>
+            <div class="opt-info"><h4>Pack 5 Fiches</h4><p>5 fiches avec cohérence de ton garantie</p></div>
+            <div class="opt-price">120€</div>
+          </div>
+          <div class="option-row" onclick="selectOpt(this,'premium',15,299)">
+            <div class="opt-radio"></div>
+            <div class="opt-info"><h4>Pack Premium 15 Fiches</h4><p>15 fiches + audit boutique offert</p></div>
+            <div class="opt-price">299€</div>
+          </div>
+        </div>
+        <div id="qtyWrap" style="display:none;">
+          <div class="qty-section">
+            <label>Nombre de fiches supplémentaires<small>Pour le pack solo uniquement (+29€/fiche)</small></label>
+            <div class="qty-ctrl">
+              <button class="qty-btn2" onclick="chQty(-1)">−</button>
+              <span class="qty-val2" id="qtyDisplay">1</span>
+              <button class="qty-btn2" onclick="chQty(1)">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="recap-dark" id="orderRecap" style="display:none;">
+          <div><div class="lbl">Formule sélectionnée</div><div class="val" id="ord-label">—</div></div>
+          <div class="total-price" id="ord-price">—</div>
+        </div>
+        <div class="mnav">
+          <div class="step-dots"><div class="sdot done"></div><div class="sdot"></div><div class="sdot"></div><div class="sdot"></div></div>
+          <button class="btn-dark" onclick="oGoStep(2)">Continuer →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Brief -->
+      <div class="mstep" id="os2">
+        <div class="order-header">
+          <div class="kicker">Brief</div>
+          <h2>Parlez-moi de vos produits</h2>
+          <p>Plus c'est précis, plus le résultat est percutant.</p>
+        </div>
+        <div class="form-stack brief-section">
+          <div class="form-row">
+            <div class="fi"><label>Votre prénom</label><input type="text" id="bPrenom" placeholder="Jean"></div>
+            <div class="fi"><label>Votre email</label><input type="email" id="bEmail" placeholder="jean@boutique.com"></div>
+          </div>
+          <div class="fi"><label>URL de votre boutique</label><input type="url" id="bUrl" placeholder="https://maboutique.com"></div>
+          <div class="fi"><label>Nom(s) du / des produit(s)</label><input type="text" id="bProduits" placeholder="Ex : Montre Heritage Oak, Sac Cuir Milano..."></div>
+          <div class="fi"><label>Décrivez votre client idéal</label><textarea id="bClient" rows="3" placeholder="Ex : Femmes 30-45 ans, actives, sensibles au design et à la qualité..."></textarea></div>
+          <div class="fi"><label>Ce qui rend votre produit unique</label><textarea id="bUsp" rows="3" placeholder="Ex : Cuir pleine fleur, fabrication française, série limitée à 200 pièces..."></textarea></div>
+          <div class="fi"><label>Ton souhaité</label>
+            <select id="bTon">
+              <option value="">Choisir...</option>
+              <option>Luxe et sophistiqué</option>
+              <option>Friendly et accessible</option>
+              <option>Expert et technique</option>
+              <option>Inspirant et lifestyle</option>
+              <option>Direct et efficace</option>
+            </select>
+          </div>
+        </div>
+        <div class="mnav">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <button class="btn-border" onclick="oGoStep(1)" style="padding:12px 20px;font-size:0.75rem;">← Retour</button>
+            <div class="step-dots"><div class="sdot done"></div><div class="sdot done"></div><div class="sdot"></div><div class="sdot"></div></div>
+          </div>
+          <button class="btn-dark" onclick="oGoStep(3)">Paiement →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Paiement -->
+      <div class="mstep" id="os3">
+        <div class="order-header">
+          <div class="kicker">Paiement</div>
+          <h2>Réglez votre commande</h2>
+          <p>Paiement 100% sécurisé via Stripe.</p>
+        </div>
+        <div class="pay-recap">
+          <div class="pay-recap-row"><span>Formule</span><span id="pay-form">—</span></div>
+          <div class="pay-recap-row"><span>Client</span><span id="pay-client">—</span></div>
+          <div class="pay-recap-row total"><span>Total</span><span id="pay-tot">—</span></div>
+        </div>
+        <div class="stripe-box">
+          <div class="stripe-box-label">Paiement sécurisé · Stripe</div>
+          <div class="stripe-fields">
+            <div class="sf">Numéro de carte · · · · · · · · · · · · · · · ·</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div class="sf">MM / AA</div>
+              <div class="sf">CVC</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:0.72rem;color:var(--muted);margin-bottom:20px;">En passant commande, vous acceptez les conditions générales de vente. Délai de livraison indicatif selon la formule choisie.</p>
+        <div class="mnav">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <button class="btn-border" onclick="oGoStep(2)" style="padding:12px 20px;font-size:0.75rem;">← Retour</button>
+            <div class="step-dots"><div class="sdot done"></div><div class="sdot done"></div><div class="sdot done"></div><div class="sdot"></div></div>
+          </div>
+          <button class="btn-dark" onclick="oGoStep(4)">Payer & Commander →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Confirmation -->
+      <div class="mstep" id="os4">
+        <div class="conf-wrap">
+          <div class="conf-icon">✓</div>
+          <h2>Commande confirmée !</h2>
+          <p>Votre brief a bien été reçu. Je vous envoie vos fiches produit à <strong id="conf-mail">—</strong> dans les délais convenus. Je prends contact si j'ai des questions.</p>
+          <div class="conf-card">
+            <div class="conf-row"><span>Formule</span><span id="cconf-form">—</span></div>
+            <div class="conf-row"><span>Email livraison</span><span id="cconf-mail">—</span></div>
+            <div class="conf-row"><span>Montant payé</span><span id="cconf-price" style="color:var(--gold2);font-weight:600;">—</span></div>
+            <div class="conf-row"><span>Référence</span><span id="cconf-ref" style="color:var(--gold2);font-weight:600;">—</span></div>
+          </div>
+          <button class="btn-dark" onclick="closeOrder()">Fermer</button>
+          <div class="step-dots" style="justify-content:center;display:flex;gap:7px;margin-top:24px;">
+            <div class="sdot done"></div><div class="sdot done"></div><div class="sdot done"></div><div class="sdot done"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+let selOpt = null, selQty = 1, selPrice = 0, selLabel = '';
+
+function openOrder(type) {
+  // pre-select
+  const map = {fiche:0, pack:1, premium:2};
+  const rows = document.querySelectorAll('.option-row');
+  if(map[type] !== undefined) {
+    rows.forEach(r=>r.classList.remove('selected'));
+    rows[map[type]].click();
+  }
+  document.getElementById('orderModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  oGoStep(1);
+}
+
+function closeOrder(){
+  document.getElementById('orderModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function handleMBack(e){
+  if(e.target===document.getElementById('orderModal')) closeOrder();
+}
+
+function selectOpt(el, type, qty, price){
+  document.querySelectorAll('.option-row').forEach(r=>r.classList.remove('selected'));
+  el.classList.add('selected');
+  selOpt=type; selQty=qty; selPrice=price;
+  selLabel=el.querySelector('h4').textContent;
+  document.getElementById('qtyWrap').style.display = type==='fiche' ? 'block' : 'none';
+  document.getElementById('qtyDisplay').textContent = selQty;
+  updateOrderRecap();
+}
+
+function chQty(d){
+  selQty = Math.max(1, selQty+d);
+  selPrice = 29 * selQty;
+  document.getElementById('qtyDisplay').textContent = selQty;
+  updateOrderRecap();
+}
+
+function updateOrderRecap(){
+  const r = document.getElementById('orderRecap');
+  r.style.display = selOpt ? 'flex' : 'none';
+  if(selOpt){
+    document.getElementById('ord-label').textContent = selLabel + (selOpt==='fiche'&&selQty>1 ? ` × ${selQty}` : '');
+    document.getElementById('ord-price').textContent = selPrice.toFixed(2).replace('.',',')+'€';
+  }
+}
+
+function oGoStep(n){
+  if(n===2 && !selOpt){ alert('Veuillez choisir une formule.'); return; }
+  if(n===3){
+    const prenom=document.getElementById('bPrenom').value.trim();
+    const email=document.getElementById('bEmail').value.trim();
+    const produits=document.getElementById('bProduits').value.trim();
+    if(!prenom||!email||!produits){alert('Veuillez remplir au minimum prénom, email et nom des produits.');return;}
+    document.getElementById('pay-form').textContent=selLabel+(selOpt==='fiche'&&selQty>1?` × ${selQty}`:'');
+    document.getElementById('pay-client').textContent=prenom+' · '+email;
+    document.getElementById('pay-tot').textContent=selPrice.toFixed(2).replace('.',',')+'€';
+  }
+  if(n===4){
+    const email=document.getElementById('bEmail').value.trim();
+    const prenom=document.getElementById('bPrenom').value.trim();
+    document.getElementById('conf-mail').textContent=email;
+    document.getElementById('cconf-form').textContent=selLabel+(selOpt==='fiche'&&selQty>1?` × ${selQty}`:'');
+    document.getElementById('cconf-mail').textContent=email;
+    document.getElementById('cconf-price').textContent=selPrice.toFixed(2).replace('.',',')+'€';
+    document.getElementById('cconf-ref').textContent='RC-'+Math.random().toString(36).substr(2,8).toUpperCase();
+  }
+  document.querySelectorAll('.mstep').forEach(s=>s.classList.remove('active'));
+  document.getElementById('os'+n).classList.add('active');
+}
+
+// NAV scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>40);
+});
+
+// Reveals
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// ESC
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeOrder();}});
+</script>
+</body>
+</html>
